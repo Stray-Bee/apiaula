@@ -28,6 +28,20 @@ class _PaginaState extends State<Pagina> {
     });
   }
 
+  void _createPost() async{
+    Post novoPost = Post(
+        userId: 200,
+        id: 200,
+        title: 'Novo título',
+        body: "informações sobre o novo sistema de posts"
+    );
+    Post? aux = await apiService.createPost(novoPost);
+    if(aux!=null){
+        print('${aux.userId} - ${aux.id} - ${aux.title} - ${aux.body}');
+    }
+    _loadPosts();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
