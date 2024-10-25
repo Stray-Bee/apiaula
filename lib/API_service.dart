@@ -39,9 +39,17 @@ class ApiService {
       body: jsonEncode(post.toMap()),
     );
       if(response.statusCode==200){
+        print("Dado atualizado com sucesso!");
         return Post.fromMap(jsonDecode(response.body));
       }
       return null;
   }
 
+  Future<void> deletePost (int id) async{
+    final response = await http.delete(
+      Uri.parse('$baseUrl/$id'));
+      if(response.statusCode == 200){
+        print("Dado deletado com sucesso!");
+      }
+  }
 }
