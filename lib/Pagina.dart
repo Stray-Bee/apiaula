@@ -61,7 +61,6 @@ class _PaginaState extends State<Pagina> {
     _loadPosts();
   }
 
-}
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +80,26 @@ class _PaginaState extends State<Pagina> {
             ),
           );  
         },
+      ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+            const SizedBox(height: 10,),
+            FloatingActionButton(
+                onPressed: _createPost,
+                child: const Icon(Icons.add),
+            ),
+            const SizedBox(height: 10,),
+            FloatingActionButton(
+                onPressed: _updatePost,
+                child: const Icon(Icons.update),
+            ),
+            const SizedBox(height: 10,),
+            FloatingActionButton(
+                onPressed: _updatePost,
+                child: const Icon(Icons.delete),
+            ),
+        ],
       ),
     );
   }
