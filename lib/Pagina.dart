@@ -56,6 +56,11 @@ class _PaginaState extends State<Pagina> {
     _loadPosts();
   }
 
+  void _deletePost() async{
+    await apiService.deletePost(1);
+    _loadPosts();
+  }
+
 }
 
   @override
