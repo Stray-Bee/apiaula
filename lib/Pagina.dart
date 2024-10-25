@@ -42,6 +42,22 @@ class _PaginaState extends State<Pagina> {
     _loadPosts();
   }
 
+  void _updatePost() async{
+    Post updatePost = Post(
+        userId: 200,
+        id: 200,
+        title: 'Atualizações',
+        body: "Atualizações sobre as informações do novo sistema de posts"
+    );
+    Post? aux = await apiService.updatePost(updatePost, 1);
+    if(aux!=null){
+        print('${aux.userId} - ${aux.id} - ${aux.title} - ${aux.body}');
+    }
+    _loadPosts();
+  }
+
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
