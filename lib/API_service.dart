@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:apiaula/post.dart';
+import 'package:flutter/gestures.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
@@ -29,6 +30,17 @@ class ApiService {
         return Post.fromMap(jsonDecode(response.body));
       }
       return null;
+  }
+
+  Future<Post?> updatePost(Post post, int id) async{
+    final response = await http.put(
+      Uri.parse('$baseUrl/$id'),
+      headers: {"Content-Type":"application/json"},
+      body: jsonEncode(post.toMap()),
+    );
+      if(response.statusCode==200){
+        return Post.fromMap(jsonDecode(response.body));
+      }
   }
 
 }
