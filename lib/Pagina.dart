@@ -38,9 +38,12 @@ class _PaginaState extends State<Pagina> {
       body: ListView.builder(
         itemCount: posts.length,
         itemBuilder: (context, index){
-          return ListTile(
-            title: Text('${posts[index].userId} - ${posts[index].id}'),
-            subtitle: Text ('${posts[index].title} - ${posts[index].body}')
+          return Card(
+            elevation: 10,
+            child: ListTile(
+              title: Text('${posts[index].userId} - ${posts[index].id}'),
+              subtitle: Text ('${posts[index].title} - ${posts[index].body}')
+            ),
           );  
         },
       ),
