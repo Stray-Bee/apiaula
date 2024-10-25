@@ -19,4 +19,16 @@ class ApiService {
     return [];
   }
 
+  Future<Post?> createPost(Post post) async{
+    final response = await http.post(
+      Uri.parse(baseUrl),
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode(post.toMap()),
+      );
+      if(response.statusCode == 201){
+        return Post.fromMap(jsonDecode(response.body));
+      }
+      return null;
+  }
+
 }
