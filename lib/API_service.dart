@@ -5,18 +5,18 @@ import 'package:apiaula/post.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  final String baseURL = 'https://jsonplaceholder.typicode.com/posts';
+  final String baseUrl = 'https://jsonplaceholder.typicode.com/posts';
 
-//GET
+  // GET
   Future<List<Post>> getPosts() async{
-    final response = await http.get(Uri.parse(baseURL));
+    final response = await http.get(Uri.parse(baseUrl));
     if(response.statusCode == 200){
       List<dynamic> body = jsonDecode(response.body);
       return body.map((dynamic item){
         return Post.fromMap(item);
       }).toList();
     }
-    return[];
+    return [];
   }
-  
+
 }
